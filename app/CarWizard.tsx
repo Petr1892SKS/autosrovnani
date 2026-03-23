@@ -160,7 +160,11 @@ export default function CarWizard({ onSubmit, loading }: Props) {
       setUnlockedUpTo(next);
       setTimeout(() => {
         const nextId = STEP_ORDER[next];
-        stepRefs.current[nextId]?.scrollIntoView({ behavior: "smooth", block: "start" });
+        const el = stepRefs.current[nextId];
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 90;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
       }, 80);
     }
   };
