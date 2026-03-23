@@ -161,10 +161,20 @@ export default function CarWizard({ onSubmit, loading }: Props) {
       setTimeout(() => {
         const nextId = STEP_ORDER[next];
         const el = stepRefs.current[nextId];
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 90;
-          window.scrollTo({ top, behavior: "smooth" });
+        if (!el) return;
+        // hledáme scrollovatelného předka (formulářový kontejner)
+        let parent = el.parentElement;
+        while (parent) {
+          const overflow = getComputedStyle(parent).overflowY;
+          if (overflow === "auto" || overflow === "scroll") {
+            parent.scrollTo({ top: el.offsetTop - 16, behavior: "smooth" });
+            return;
+          }
+          parent = parent.parentElement;
         }
+        // fallback — scroll celé stránky s offsetem pro navbar
+        const top = el.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top, behavior: "smooth" });
       }, 80);
     }
   };
