@@ -608,11 +608,11 @@ export default function AutoSrovnani() {
                 <CarWizard onSubmit={handleWizardSubmit} loading={loading} />
               </>
             )}
-          </div>
-          <div className="form-scroll-hint">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
+            <div className="form-scroll-hint">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </div>
           </div>
           </div>
         </div>
