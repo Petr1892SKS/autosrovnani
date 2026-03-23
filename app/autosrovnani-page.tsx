@@ -291,6 +291,19 @@ export default function AutoSrovnani() {
         .form-section-header p { font-size: 1rem; color: var(--text2); }
 
         /* FORM CARD */
+        .form-card-wrap { position: relative; }
+        .form-scroll-hint {
+          position: sticky; bottom: 0; left: 0; right: 0; height: 64px; pointer-events: none;
+          background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 100%);
+          display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px;
+          border-radius: 0 0 24px 24px;
+        }
+        @keyframes bounceDown {
+          0%,100% { transform: translateY(0); opacity: 0.5; }
+          50% { transform: translateY(5px); opacity: 1; }
+        }
+        .form-scroll-hint svg { animation: bounceDown 1.4s ease-in-out infinite; color: var(--green); }
+
         .hero-form-card {
           background: white; border-radius: 24px; padding: 36px;
           box-shadow: 0 20px 60px rgba(249,115,22,0.12), 0 2px 8px rgba(0,0,0,0.04);
@@ -576,7 +589,8 @@ export default function AutoSrovnani() {
             <h2>Zadejte auto a získejte nabídky</h2>
             <p>Zabere to 2 minuty. Výsledek do 24 hodin.</p>
           </div>
-          <div className="hero-form-card" style={{ maxHeight: "80vh", overflowY: "auto", scrollbarWidth: "thin" }}>
+          <div className="form-card-wrap">
+          <div className="hero-form-card" style={{ maxHeight: "70vh", overflowY: "auto", scrollbarWidth: "thin" }}>
             {submitted ? (
               <div className="success-box">
                 <div className="success-icon">
@@ -594,6 +608,12 @@ export default function AutoSrovnani() {
                 <CarWizard onSubmit={handleWizardSubmit} loading={loading} />
               </>
             )}
+          </div>
+          <div className="form-scroll-hint">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
           </div>
         </div>
       </section>
