@@ -167,7 +167,8 @@ export default function CarWizard({ onSubmit, loading }: Props) {
         while (parent) {
           const overflow = getComputedStyle(parent).overflowY;
           if (overflow === "auto" || overflow === "scroll") {
-            parent.scrollTo({ top: el.offsetTop - 16, behavior: "smooth" });
+            const top = el.getBoundingClientRect().top - parent.getBoundingClientRect().top + parent.scrollTop - 16;
+            parent.scrollTo({ top, behavior: "smooth" });
             return;
           }
           parent = parent.parentElement;
