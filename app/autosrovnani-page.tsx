@@ -429,6 +429,8 @@ export default function AutoSrovnani() {
         .faq-item {
           border: 1.5px solid var(--border); border-radius: var(--radius-sm);
           overflow: hidden; transition: border-color 0.2s;
+          opacity: 0;
+          animation: cardIn 0.5s cubic-bezier(.22,.68,0,1.2) forwards;
         }
         .faq-item.open { border-color: var(--green); }
         .faq-q {
@@ -675,7 +677,7 @@ export default function AutoSrovnani() {
           </div>
           <div className="faq-list">
             {faqs.map((f, i) => (
-              <div key={i} className={`faq-item reveal d${(i % 3) + 1}${openFaq === i ? " open" : ""}`}>
+              <div key={i} className={`faq-item${openFaq === i ? " open" : ""}`} style={{ animationDelay: `${i * 0.08}s` }}>
                 <button className="faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                   {f.q}
                   <div className="faq-icon">
