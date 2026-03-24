@@ -539,7 +539,7 @@ export default function AutoSrovnani() {
           <h1>
             Prodejte auto<br />
             za <span className="accent">nejvyšší cenu.</span><br />
-            Bez objíždění.
+            Bez jediné návštěvy.
           </h1>
           <p>
             Zadejte auto jednou. My oslovíme prověřené bazary, necháme je soutěžit a pošleme vám srovnání nabídek. Vy vyberete tu nejlepší.
